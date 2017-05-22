@@ -80,7 +80,7 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme({userAgent, ...muiTheme})}>
         <div style={styles.container}>
           <AppBar
-            title="Title"
+            title="Manos The Rise of Torgo"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             onTouchTap={this.handleToggle}
           />
