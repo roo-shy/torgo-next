@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
 import Dialog from 'material-ui/Dialog'
 import {deepOrange500} from 'material-ui/styles/colors'
 import FlatButton from 'material-ui/FlatButton'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
 
 // Make sure react-tap-event-plugin only gets injected once
 // Needed for material-ui
@@ -16,8 +18,7 @@ if (!process.tapEventInjected) {
 
 const styles = {
   container: {
-    textAlign: 'center',
-    paddingTop: 200
+    textAlign: 'center'
   }
 }
 
@@ -60,6 +61,10 @@ class Main extends Component {
     })
   }
 
+  handleToggle = () => this.setState({open: !this.state.open});
+
+  handleClose = () => this.setState({open: false});
+  
   render () {
     const { userAgent } = this.props
 
@@ -74,21 +79,21 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({userAgent, ...muiTheme})}>
         <div style={styles.container}>
-          <Dialog
-            open={this.state.open}
-            title='Super Secret Password'
-            actions={standardActions}
-            onRequestClose={this.handleRequestClose}
-          >
-            1-2-3-4-5
-          </Dialog>
-          <h1>Material-UI</h1>
-          <h2>example project</h2>
-          <RaisedButton
-            label='Super Secret Password'
-            secondary={Boolean(true)}
-            onTouchTap={this.handleTouchTap}
+          <AppBar
+            title="Title"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            onTouchTap={this.handleToggle}
           />
+           <Drawer
+             docked={false}
+             width={200}
+             open={this.state.open}
+             onRequestChange={(open) => this.setState({open})}
+           >
+             <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
+             <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+           </Drawer>
+      
         </div>
       </MuiThemeProvider>
     )

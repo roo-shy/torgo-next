@@ -32,10 +32,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _RaisedButton = require('material-ui/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
 var _Dialog = require('material-ui/Dialog');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
@@ -58,6 +54,18 @@ var _reactTapEventPlugin = require('react-tap-event-plugin');
 
 var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
+var _AppBar = require('material-ui/AppBar');
+
+var _AppBar2 = _interopRequireDefault(_AppBar);
+
+var _Drawer = require('material-ui/Drawer');
+
+var _Drawer2 = _interopRequireDefault(_Drawer);
+
+var _MenuItem = require('material-ui/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/Users/Rooshy/Desktop/Projects/torgo-next/pages/index.js?entry';
@@ -72,8 +80,7 @@ if (!process.tapEventInjected) {
 
 var styles = {
   container: {
-    textAlign: 'center',
-    paddingTop: 200
+    textAlign: 'center'
   }
 };
 
@@ -120,6 +127,14 @@ var Main = function (_Component) {
       });
     };
 
+    _this.handleToggle = function () {
+      return _this.setState({ open: !_this.state.open });
+    };
+
+    _this.handleClose = function () {
+      return _this.setState({ open: false });
+    };
+
     _this.state = {
       open: false
     };
@@ -129,6 +144,8 @@ var Main = function (_Component) {
   (0, _createClass3.default)(Main, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var userAgent = this.props.userAgent;
 
       var standardActions = _react2.default.createElement(_FlatButton2.default, {
@@ -137,46 +154,46 @@ var Main = function (_Component) {
         onTouchTap: this.handleRequestClose,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 72
         }
       });
 
       return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: (0, _getMuiTheme2.default)((0, _extends3.default)({ userAgent: userAgent }, muiTheme)), __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 80
         }
       }, _react2.default.createElement('div', { style: styles.container, __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 81
         }
-      }, _react2.default.createElement(_Dialog2.default, {
+      }, _react2.default.createElement(_AppBar2.default, {
+        title: 'Title',
+        iconClassNameRight: 'muidocs-icon-navigation-expand-more',
+        onTouchTap: this.handleToggle,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 82
+        }
+      }), _react2.default.createElement(_Drawer2.default, {
+        docked: false,
+        width: 200,
         open: this.state.open,
-        title: 'Super Secret Password',
-        actions: standardActions,
-        onRequestClose: this.handleRequestClose,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 77
-        }
-      }, '1-2-3-4-5'), _react2.default.createElement('h1', {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 85
-        }
-      }, 'Material-UI'), _react2.default.createElement('h2', {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 86
-        }
-      }, 'example project'), _react2.default.createElement(_RaisedButton2.default, {
-        label: 'Super Secret Password',
-        secondary: Boolean(true),
-        onTouchTap: this.handleTouchTap,
+        onRequestChange: function onRequestChange(open) {
+          return _this2.setState({ open: open });
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 87
         }
-      })));
+      }, _react2.default.createElement(_MenuItem2.default, { onTouchTap: this.handleClose, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 93
+        }
+      }, 'Menu Item'), _react2.default.createElement(_MenuItem2.default, { onTouchTap: this.handleClose, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 94
+        }
+      }, 'Menu Item 2'))));
     }
   }]);
 
