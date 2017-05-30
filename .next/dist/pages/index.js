@@ -167,7 +167,7 @@ var Main = function (_Component) {
           lineNumber: 81
         }
       }, _react2.default.createElement(_AppBar2.default, {
-        title: 'Title',
+        title: 'Manos The Rise of Torgo',
         iconClassNameRight: 'muidocs-icon-navigation-expand-more',
         onTouchTap: this.handleToggle,
         __source: {
