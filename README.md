@@ -1,4 +1,4 @@
 ## Under Construction 🚧
 
-### Run
+### Run locally
 - `npm run dev`
