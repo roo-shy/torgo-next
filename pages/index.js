@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import Dialog from 'material-ui/Dialog'
-import {deepOrange500} from 'material-ui/styles/colors'
+import {cyan500} from 'material-ui/styles/colors'
 import FlatButton from 'material-ui/FlatButton'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -22,11 +23,14 @@ const styles = {
   }
 }
 
-const muiTheme = {
+const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: deepOrange500
-  }
-}
+    accent1Color: cyan500,
+  },
+  appBar: {
+    height: 50,
+  },
+});
 
 class Main extends Component {
   static getInitialProps ({ req }) {
@@ -77,7 +81,7 @@ class Main extends Component {
     )
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme({userAgent, ...muiTheme})}>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
           <AppBar
             title="Manos The Rise of Torgo"
