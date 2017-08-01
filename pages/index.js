@@ -46,8 +46,7 @@ class Main extends Component {
   }
 
   constructor (props, context) {
-    super(props, context)
-
+    super(props, context);
     this.state = {
       open: false
     }
